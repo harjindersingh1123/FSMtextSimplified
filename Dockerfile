@@ -2,10 +2,11 @@
 FROM python:3
 
 #Add files
-ADD src/movie_rating.py /
+ADD src/app.py /
+ADD src/templates/index.html /templates/index.html
 ADD requirement.txt /
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirement.txt
 #run command
-ENTRYPOINT ["python", "movie_rating.py"]
+ENTRYPOINT ["python", "app.py"]
