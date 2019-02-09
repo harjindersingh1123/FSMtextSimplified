@@ -18,4 +18,4 @@ def process_fsm():
     # stores.append(new_store)
     return(jsonify({'message': 'this is return message from FSMtext'}))
 
-app.run(port = 5000, debug=True)
+app.run(host='0.0.0.0', port = 5000, debug=True)
