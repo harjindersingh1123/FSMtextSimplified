@@ -8,22 +8,20 @@
 ```
 docker build github.com/harjindersingh1123/FSMtextSimplified.git -t fsmtextsimplified
 ```
-## 2) Test image in local directory (movie-rating should have been there)
+## 2) Test image in local directory (fsmtextsimplified should have been there)
 ```
-docker image list
+docker run -p 5000:5000 fsmtextsimplified:latest
 ```
-## 3) Run the image in docker in intractive mode(as user has to given title name in input) 
-```
-docker run fsmtextsimpilied --title <title>
-```
-## 4) User needs to enter movie title name
-```
-$ docker run movie-rating --title batman
-Rotten Tomatoes rating for title 'Batman' is : 72%
-```
+
 ## Image can be run directly from docker as well
 ```
 docker run harry675/movie-rating --title <title>
+```
+## Git clone, build and run the container
+```
+git clone https://github.com/harjindersingh1123/FSMtextSimplified.git
+docker build -t fsmtextsimplified:latest .
+docker run -p 5000:5000 fsmtextsimplified:latest
 ```
 
 
