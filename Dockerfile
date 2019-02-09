@@ -5,6 +5,7 @@ FROM python:3
 ADD src/app.py /
 ADD src/templates/index.html /templates/index.html
 ADD requirement.txt /
+EXPOSE 5000
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirement.txt
