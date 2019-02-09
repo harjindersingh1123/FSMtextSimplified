@@ -6,7 +6,7 @@
    b) git should have been installed and working
 ## 1) compile docker image using following command
 ```
-docker build github.com/harjindersingh1123/FSMtextSimpilied.git -t movie-rating
+docker build github.com/harjindersingh1123/FSMtextSimplified.git -t fsmtextsimplified
 ```
 ## 2) Test image in local directory (movie-rating should have been there)
 ```
