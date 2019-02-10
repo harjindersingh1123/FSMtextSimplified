@@ -1,0 +1,6 @@
+Value Filldown date ((Mon|Tue|Wed|Thu|Fri|Sat|Sun).*)
+Value Filldown node (\S+)
+
+Start
+  ^${date} 
+  ^\-+\s+node${node} -> Record
