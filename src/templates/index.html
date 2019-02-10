@@ -16,6 +16,19 @@ function getResult(){ // x,y) {
   	
   //  document.getElementById("result").innerText = "This is result from server";
 }
+
+function submitForm(oFormElement)
+{
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function(){ alert (xhr.responseText);  document.getElementById("result").innerText = xhr.responseText; } // success case
+  xhr.onerror = function(){ alert (xhr.responseText); } // failure case
+  xhr.open (oFormElement.method, oFormElement.action, true);
+  var formData = new FormData(document.getElementById('input_form'));
+  xhr.send (formData);
+  //xhr.send (new FormData (oFormElement));
+  // console.log(request.response);
+  return false;
+}
 </script>
 <style>
 .divTable{
@@ -52,11 +65,15 @@ function getResult(){ // x,y) {
 .divTableBody {
 	display: table-row-group;
 }
+textarea {
+  width: 500px;
+  height: 500px;
+}
 </style>
 </head>
 <body  onload="getResult()">
 <!--  Here in action, give endpoint of your server where tool runs -->
-<form  action="/action_page.php">
+<form  action="/fsm"  method="post"  id="input_form"  onsubmit="return submitForm(this);">
 <p>This is a very simple HTML document</p>
 <p>It takes input text and template text</p>
 <div class="divTable">
@@ -70,7 +87,8 @@ function getResult(){ // x,y) {
 <div class="divTableCell"><textarea id="template_data" rows="10" cols="30" ></textarea>&nbsp;</div>
 </div>
 <div class="divTableRow">
-<input type="submit" />
+<div class="divTableCell" style="float: right;" ><button type="reset" value="Reset">Reset</button><input type="submit" /></div>
+
 </div>
 
 <div class="divTableRow"> Result shows here:</div>
