@@ -3,9 +3,22 @@
 <title>
 GUI for textFSM
 </title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
 var z;
 
+$(document).on("click", ":submit", function(e){
+    // alert($(this).val());
+    // alert($(this).attr('id'));
+   // var actionId=$(this).attr('id');
+   //actionURL=/dict
+   if($(this).attr('id') == "list_submit")
+   $('#input_form').attr('action', '/list');
+   if($(this).attr('id') == "dict_submit")
+   $('#input_form').attr('action', '/dict');
+    //alert($(#input_form).attr('action'));     
+   return true;
+});
 function getResult(){ // x,y) {
   //  z = x + y;
   //alert("Page loading");
@@ -16,7 +29,6 @@ function getResult(){ // x,y) {
   	
   //  document.getElementById("result").innerText = "This is result from server";
 }
-
 function submitForm(oFormElement)
 {
   var xhr = new XMLHttpRequest();
@@ -24,6 +36,9 @@ function submitForm(oFormElement)
   document.getElementById("result").innerText = xhr.responseText; } // success case
   xhr.onerror = function(){ alert (xhr.responseText); } // failure case
   xhr.open (oFormElement.method, oFormElement.action, true);
+  if($(document.activeElement).attr('id') == 'dict_submit')
+  //$(#input_form).attr('action', '/dict');
+   alert(oFormElement.action);
   var formData = new FormData(document.getElementById('input_form'));
   xhr.send (formData);
   //xhr.send (new FormData (oFormElement));
@@ -74,7 +89,7 @@ textarea {
 </head>
 <body  onload="getResult()">
 <!--  Here in action, give endpoint of your server where tool runs -->
-<form  action="/dict"  method="post"  id="input_form"  onsubmit="return submitForm(this);">
+<form  method="post"  id="input_form"  onsubmit="return submitForm(this);">
 <p>This is a very simple GUI for textFSM library</p>
 <p>It takes CLI text and template as input and returns dictionery or list</p>
 <div class="divTable">
@@ -88,7 +103,7 @@ textarea {
 <div class="divTableCell"><textarea name="template_data" id="template_data" rows="10" cols="30" ></textarea>&nbsp;</div>
 </div>
 <div class="divTableRow">
-<div class="divTableCell" style="float: right;" ><button type="reset" value="Reset">Reset</button><input type="submit" /></div>
+<div class="divTableCell" style="float: right;" ><button type="reset" value="Reset">Reset</button><input name="actioned" id="dict_submit" type="submit" value="Submit with Dict" /><input name="actioned"   id="list_submit" type="submit" value="Submit with List" /></div>
 
 </div>
 
