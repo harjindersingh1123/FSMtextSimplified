@@ -38,7 +38,7 @@ function submitForm(oFormElement)
   xhr.open (oFormElement.method, oFormElement.action, true);
   if($(document.activeElement).attr('id') == 'dict_submit')
   //$(#input_form).attr('action', '/dict');
-   alert(oFormElement.action);
+   //alert(oFormElement.action);
   var formData = new FormData(document.getElementById('input_form'));
   xhr.send (formData);
   //xhr.send (new FormData (oFormElement));
