@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from flask_restful import Resource, Api
-from textfsm_mod import TextFSMExt
+from textfsm_ext import TextFSMExt
 #from flask_jwt import JWT, jwt_required
 
 #jwt = JWT(authenticate, identity) # end point /auth
