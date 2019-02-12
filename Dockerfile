@@ -3,7 +3,7 @@ FROM python:3
 
 #Add files
 ADD src/app.py /
-ADD src/textfsm_mod.py /
+ADD src/textfsm_ext.py /
 ADD src/templates/index.html /templates/index.html
 ADD requirement.txt /
 EXPOSE 5000
