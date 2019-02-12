@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from flask_restful import Resource, Api
+from textfsm_mod import TextFSMExt
 #from flask_jwt import JWT, jwt_required
 
 #jwt = JWT(authenticate, identity) # end point /auth
@@ -14,26 +15,36 @@ def home():
 
 
 class TextFSMDict(Resource):
-    # @jwt_required()
-    # def get(self, name):
-    #     # for item in items:
-    #     #     if item['name'] == name:
-    #     #         return (item)
-    #     item = next(filter(lambda x: x['name'] == name, items), None)
-    #     return ({'item': item}, 200 if item else 404)
-
     def post(self):
-        template  = request.args.get('template_data', None)
-        cli  = request.args.get('input_data', None)
-       # pdb.set_trace()
+        cli  = request.form.get('input_data', None)
+        template  = request.form.get('template_data', None)
+        
         print(template)
         print(cli)
-        # if next(filter(lambda x: x['name'] == name, items), None):
-        #     return({'message', ' item {} is already exists'.format(name)}, 400)
-        # data = request.get_json()
-        # item = {'name': name, 'price':data['price']}
-        # items.append(item)
-        return (jsonify({'template': template, 'cli_input': cli}))
+
+        ts = TextFSMExt()
+        #out_data=ts.get_dict('sh_mem.txt', cli)
+        out_data=ts.get_dict_from_str(template, cli)
+
+
+        return (jsonify({'output': out_data}))
+
+class TextFSMList(Resource):
+    def post(self):
+        cli  = request.form.get('input_data', None)
+        template  = request.form.get('template_data', None)
+        
+        print(template)
+        print(cli)
+
+        ts = TextFSMExt()
+        #out_data=ts.get_dict('sh_mem.txt', cli)
+        out_data=ts.get_tup_from_str(template, cli)
+
+
+        return (jsonify({'output': out_data}))
 
 api.add_resource(TextFSMDict, '/dict')
+api.add_resource(TextFSMList, '/list')
+
 app.run(host='0.0.0.0', port = 5000, debug=True)

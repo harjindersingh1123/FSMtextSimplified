@@ -1,14 +1,14 @@
 <html>
 <head>
 <title>
-A Simple HTML Document
+GUI for textFSM
 </title>
 <script>
 var z;
 
 function getResult(){ // x,y) {
   //  z = x + y;
-  alert("Page loading");
+  //alert("Page loading");
   // Make sure that there is input data
   	if(document.getElementById("input_data").innerText){
   		document.getElementById("result").innerText = "This is result from server";
@@ -20,7 +20,8 @@ function getResult(){ // x,y) {
 function submitForm(oFormElement)
 {
   var xhr = new XMLHttpRequest();
-  xhr.onload = function(){ alert (xhr.responseText);  document.getElementById("result").innerText = xhr.responseText; } // success case
+  xhr.onload = function(){ //alert (xhr.responseText);  
+  document.getElementById("result").innerText = xhr.responseText; } // success case
   xhr.onerror = function(){ alert (xhr.responseText); } // failure case
   xhr.open (oFormElement.method, oFormElement.action, true);
   var formData = new FormData(document.getElementById('input_form'));
@@ -74,17 +75,17 @@ textarea {
 <body  onload="getResult()">
 <!--  Here in action, give endpoint of your server where tool runs -->
 <form  action="/dict"  method="post"  id="input_form"  onsubmit="return submitForm(this);">
-<p>This is a very simple HTML document</p>
-<p>It takes input text and template text</p>
+<p>This is a very simple GUI for textFSM library</p>
+<p>It takes CLI text and template as input and returns dictionery or list</p>
 <div class="divTable">
 <div class="divTableBody">
 <div class="divTableRow">
-<div class="divTableCell">Enter input data&nbsp;</div>
+<div class="divTableCell">Enter CLI  data&nbsp;</div>
 <div class="divTableCell">Enter template data&nbsp;</div>
 </div>
 <div class="divTableRow">
-<div class="divTableCell"><textarea id="input_data"  rows="10" cols="30"></textarea>&nbsp;</div>
-<div class="divTableCell"><textarea id="template_data" rows="10" cols="30" ></textarea>&nbsp;</div>
+<div class="divTableCell"><textarea name="input_data" id="input_data"  rows="10" cols="30"></textarea>&nbsp;</div>
+<div class="divTableCell"><textarea name="template_data" id="template_data" rows="10" cols="30" ></textarea>&nbsp;</div>
 </div>
 <div class="divTableRow">
 <div class="divTableCell" style="float: right;" ><button type="reset" value="Reset">Reset</button><input type="submit" /></div>

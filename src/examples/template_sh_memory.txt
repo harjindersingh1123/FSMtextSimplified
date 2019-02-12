@@ -1,0 +1,11 @@
+Value Filldown date ((Mon|Tue|Wed|Thu|Fri|Sat|Sun).*)
+Value Filldown node (\S+)
+Value Filldown physical_mem (\S+)
+Value Filldown free_mem (\S+)
+
+Start
+  ^${date} 
+  ^\-+\s+node${node}
+  ^\s+Physical Memory\s+:\s${physical_mem}
+  ^\s+Free Memory\s+:\s${free_mem} -> Record
+
