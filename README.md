@@ -23,5 +23,10 @@ git clone https://github.com/harjindersingh1123/FSMtextSimplified.git
 docker build -t fsmtextsimplified:latest .
 docker run -p 5000:5000 fsmtextsimplified:latest
 ```
-
-
+## use the following commands to run without container
+```
+git clone https://github.com/harjindersingh1123/FSMtextSimplified.git
+pip install -r requirements.txt 
+cd FSMtextSimplified/src
+python app.py
+```
