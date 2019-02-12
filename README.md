@@ -15,7 +15,7 @@ docker run -p 5000:5000 fsmtextsimplified:latest
 
 ## Image can be run directly from docker as well
 ```
-docker run harry675/movie-rating --title <title>
+Not pushed yet
 ```
 ## Git clone, build and run the container
 ```
