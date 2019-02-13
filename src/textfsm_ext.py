@@ -95,16 +95,16 @@ Memory information:
     Free Memory         : 3386.253 MB
     Memory State        :   Normal
 '''
-    template = '''Value Filldown date ((Mon|Tue|Wed|Thu|Fri|Sat|Sun).*)
-Value Filldown node (\S+)
-Value Filldown physical_mem (\S+)
-Value Filldown free_mem (\S+)
+    template = '''Value node (\S+)
+Value physical_mem (\S+)
+Value physical_mem_unit (MB|B|KB)
+Value free_mem (\S+)
+Value free_mem_unit (MB|B|KB)
 
 Start
-  ^${date} 
-  ^\-+\s+node${node}
-  ^\s+Physical Memory\s+:\s${physical_mem}
-  ^\s+Free Memory\s+:\s${free_mem} -> Record
+  ^\-+\s+${node}
+  ^\s+Physical Memory\s+:\s+${physical_mem}\s+${physical_mem_unit}
+  ^\s+Free Memory\s+:\s+${free_mem}\s+${free_mem_unit} -> Record
       '''
     ts = TextFSMExt()
     fileDir = os.path.dirname(os.path.realpath('__file__'))
