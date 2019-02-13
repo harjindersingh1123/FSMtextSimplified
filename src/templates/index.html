@@ -8,8 +8,8 @@ GUI for textFSM
 var z;
 
 $(document).on("click", ":submit", function(e){
-    // alert($(this).val());
-    // alert($(this).attr('id'));
+     alert($(this).val());
+     alert($(this).attr('id'));
    // var actionId=$(this).attr('id');
    //actionURL=/dict
    if($(this).attr('id') == "list_submit")
@@ -36,7 +36,7 @@ function submitForm(oFormElement)
   document.getElementById("result").innerText = xhr.responseText; } // success case
   xhr.onerror = function(){ alert (xhr.responseText); } // failure case
   xhr.open (oFormElement.method, oFormElement.action, true);
-  if($(document.activeElement).attr('id') == 'dict_submit')
+  //if($(document.activeElement).attr('id') == 'dict_submit')
   //$(#input_form).attr('action', '/dict');
    //alert(oFormElement.action);
   var formData = new FormData(document.getElementById('input_form'));
