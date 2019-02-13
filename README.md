@@ -20,6 +20,7 @@ Not pushed yet
 ## Git clone, build and run the container
 ```
 git clone https://github.com/harjindersingh1123/FSMtextSimplified.git
+cd FSMtextSimplified
 docker build -t fsmtextsimplified:latest .
 docker run -p 5000:5000 fsmtextsimplified:latest
 ```
